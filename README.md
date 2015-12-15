@@ -13,9 +13,9 @@ palikat ovat asennettuna (esim mysql tarvitsee python-mysql liitännän)
 Ohjelmisto löytyy osoitteesta: , mutta jos haluaa kokeilla itse sovellusta omassa ympäristössä, tässä asennusohjeet:
 
 1: Asenna python (käsittääkseni löytyy ubunduista valmiina) windowsille: https://www.python.org/downloads/release/python-351/ 
-2: Asenna django: windows: avaa komentorivi järjestelmänvalvojana ja kirjoita "pip install django"
-	ubundu: kirjoita terminaaliin "sudo pip install django"
-3: kloonaa repositorio: git clone https://github.com/leo0074/Junatietokanta tai githubin sivun kautta, jos githubia ei löydy koneelta.
-4: Siirry komentorivillä/terminaalilla Junatietokanta-kansioon (kansio missä on manage.py)
-5: kirjoita "python manage.py runserver" ja serveri käynnistyy
+2: Asenna django: windows: avaa komentorivi järjestelmänvalvojana ja kirjoita "pip install django" 
+	ubundu: kirjoita terminaaliin "sudo pip install django" 
+3: kloonaa repositorio: git clone https://github.com/leo0074/Junatietokanta tai githubin sivun kautta, jos githubia ei löydy koneelta. 
+4: Siirry komentorivillä/terminaalilla Junatietokanta-kansioon (kansio missä on manage.py) 
+5: kirjoita "python manage.py runserver" ja serveri käynnistyy 
 6: selaimessa kirjoita "http://127.0.0.1:8000/junaApp/" ja selaimen pitäisi ladata ohjelman etusivu.
