@@ -41,7 +41,7 @@
         <input type="hidden" name="delete" value="delete">
         <select name="asema" id="asema" class="form-control form-field">
             {% for asema in asemat %}
-                <option value="{{ asema.nimi }}">{{ asema }}</option>
+                <option value="{{ asema }}">{{ asema }}</option>
             {% endfor %}
         </select>
         <button type="submit">Poista</button>

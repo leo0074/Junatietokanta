@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db import connection
 
 #CREATE TABLE junaApp.Asema(
 #nimi varchar(30) NOT NULL PRIMARY KEY
@@ -38,7 +38,22 @@ class Juna(models.Model):
 #lahtoaika TIME()
 #)
 class Pysahdys(models.Model):
-    asema = models.ForeignKey(Asema)
-    junan_numero = models.ForeignKey(Juna)
+    asema = models.CharField(max_length=30)
+    junan_numero = models.IntegerField()
     saapumisaika = models.TimeField()
     lahtoaika = models.TimeField()
+
+class Asiakas(models.Model):
+    id = models.IntegerField(primary_key=True)
+    etunimi = models.CharField(max_length=30)
+    sukunimi = models.CharField(max_length=30)
+    kotikaupunki = models.CharField(max_length=30)
+    salasana = models.CharField(max_length=30)
+
+class Varaus(models.Model):
+    id = models.IntegerField(primary_key=True)
+    varaajan_id = models.IntegerField()
+    junan_numero = models.IntegerField()
+    varauspaiva = models.DateTimeField()
+    lahtoasema = models.CharField(max_length=30)
+    maaraasema = models.CharField(max_length=30)

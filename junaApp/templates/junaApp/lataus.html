@@ -6,6 +6,7 @@
     </head>
     <body>
         {% include "junaApp/navigation.html" %}
+        <br><br>
         <form enctype="multipart/form-data" method="post"> {% csrf_token %}
             <p>Anna tiedosto, jossa on asemia</p>
             <input type="file" id="file" name="file">
