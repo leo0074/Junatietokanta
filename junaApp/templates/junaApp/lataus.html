@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        {% include "junaApp/navigation.html" %}
+        <form enctype="multipart/form-data" method="post"> {% csrf_token %}
+            <p>Anna tiedosto, jossa on asemia</p>
+            <input type="file" id="file" name="file">
+            <input type="submit" class="btn btn-default" value="Lähetä" name="lahetys">
+        </form>
+
+    </body>
+</html>
