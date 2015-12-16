@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import connection
 
 #CREATE TABLE junaApp.Asema(
 #nimi varchar(30) NOT NULL PRIMARY KEY
@@ -24,7 +23,7 @@ class Asema(models.Model):
 #)
 class Juna(models.Model):
     numero = models.IntegerField(primary_key=True)
-    tyyppitunnus = models.CharField(max_length=5)
+    tyyppi = models.CharField(max_length=5)
     lahtoasema = models.CharField(max_length=30)
     lahtoaika =models.TimeField()
     paateasema = models.CharField(max_length=30)
