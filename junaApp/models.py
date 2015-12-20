@@ -42,6 +42,13 @@ class Pysahdys(models.Model):
     saapumisaika = models.TimeField()
     lahtoaika = models.TimeField()
 
+#CREATE TABLE junaApp.Asiakas(
+#id varchar(30) NOT NULL PRIMARY KEY
+#etunimi varcrar(30) NOT NULL
+#sukunimi varcrar(30) NOT NULL
+#kotikaupunki varcrar(30) NOT NULL
+#salasana varcrar(30) NOT NULL
+#)
 class Asiakas(models.Model):
     id = models.IntegerField(primary_key=True)
     etunimi = models.CharField(max_length=30)
@@ -49,6 +56,14 @@ class Asiakas(models.Model):
     kotikaupunki = models.CharField(max_length=30)
     salasana = models.CharField(max_length=30)
 
+#CREATE TABLE junaApp.Varaus(
+#id INT() NOT NULL PRIMARY KEY
+#varaajan_id INT() NOT NULL
+#junan_numero INT() NOT NULL
+#varauspaiva DATETIME(30) NOT NULL
+#lahtoasema varcrar(30) NOT NULL
+#maaraasema varcrar(30) NOT NULL
+#)
 class Varaus(models.Model):
     id = models.IntegerField(primary_key=True)
     varaajan_id = models.IntegerField()

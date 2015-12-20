@@ -8,7 +8,7 @@
         {% include "junaApp/navigation.html" %}
         <br><br>
         <form enctype="multipart/form-data" method="post"> {% csrf_token %}
-            <p>Anna tiedosto, jossa on asemia</p>
+            <p>Anna csv-tiedosto, jossa on asemia, junia tai pysähdyksiä</p>
             <input type="file" id="file" name="file">
             <input type="submit" class="btn btn-default" value="Lähetä">
         </form>
