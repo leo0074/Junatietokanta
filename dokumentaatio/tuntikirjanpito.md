@@ -6,3 +6,5 @@ Github-alustus, tietokantaolioiden luonti, joidenkin html-sivujen luonti, navigo
 Suurin osa sql:stä samaan paikkaan. Käyttöliittymän backendin hiemosta. 2h
 20.12.2015
 Dokumentaation aloitus. SQL-tiedostojen luonti. Palvelimen pystytys. 3h
+23.12.2015
+Junanäkymä + kontrolleri. Dokumentaation päivitys. 3h  

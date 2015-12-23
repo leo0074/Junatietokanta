@@ -11,11 +11,12 @@ def asema(request):
     if request.method == 'POST':
         data = request.POST.copy().dict()
         if "create" in data:
+
             if not data["nimi"] or not data["kaupunki"]:
                 return _virheviesti(request, data, "Pakollista tietoa puuttuu!", asemat)
+
             if sql_komentajat.asema_olemassa(data["nimi"]):
                 return _virheviesti(request, data, "Asema  on jo olemassa!", asemat)
-
             sql_komentajat.luo_asema(data)
             messages.add_message(request, messages.SUCCESS, "Asema tallennettu!")
 

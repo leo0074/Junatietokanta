@@ -9,8 +9,6 @@
     <br>
     <br>
     <form class="form" action='{% url "juna" %}' method="post">
-
-
         <h2>Lisää juna</h2>
         {% csrf_token %}
         <input type="hidden" name="create" value="create">
@@ -37,7 +35,6 @@
         <input type="text" name="kulkupaivat" value={{kulkupaivat}}><br>
 
         <button type="submit">Lisää</button>
-
     </form>
     <p id="messages">
     {% for message in messages %}
