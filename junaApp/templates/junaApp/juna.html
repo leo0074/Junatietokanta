@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% include "junaApp/navigation.html" %}
+    <br>
+    <br>
+    <form class="form" action='{% url "juna" %}' method="post">
+
+
+        <h2>Lisää juna</h2>
+        {% csrf_token %}
+        <input type="hidden" name="create" value="create">
+
+        <span class="input-group-addon wide">numero</span><br>
+        <input type="text" name="numero" value={{numero}}><br>
+
+        <span class="input-group-addon wide">tyyppi</span><br>
+        <input type="text" name="tyyppi" value={{tyyppi}}><br>
+
+        <span class="input-group-addon wide">lähtöasema</span><br>
+        <input type="text" name="lahtoasema" value={{lahtoasema}}><br>
+
+        <span class="input-group-addon wide">lähtoaika</span><br>
+        <input type="text" name="lahtoaika" value={{lahtoaika}}><br>
+
+        <span class="input-group-addon wide">pääteasema</span><br>
+        <input type="text" name="paateasema" value={{paateasema}}><br>
+
+        <span class="input-group-addon wide">saapumisaika</span><br>
+        <input type="text" name="saapumisaika" value={{saapumisaika}}><br>
+
+        <span class="input-group-addon wide">kulkupäivät</span><br>
+        <input type="text" name="kulkupaivat" value={{kulkupaivat}}><br>
+
+        <button type="submit">Lisää</button>
+
+    </form>
+    <p id="messages">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    </p>
+</body>
+</html>

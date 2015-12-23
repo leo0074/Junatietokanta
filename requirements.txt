@@ -1,2 +1,2 @@
-Django==1.8.1
-
+Django==1.8.4
+chardet==2.3.0

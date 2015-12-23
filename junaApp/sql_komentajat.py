@@ -28,7 +28,11 @@ def poista_juna(data):
     cursor.execute("DELETE from junaApp_Pysahdys where junan_numero='"+data["numero"]+"'")
 
 def juna_olemassa(numero):
-    if len(list(Asema.objects.raw("SELECT numero FROM junaApp_Juna WHERE numero='"+numero+"'"))) is not 0:
+    lista = Juna.objects.raw("SELECT * FROM junaApp_Juna WHERE numero='"+numero+"'")
+    lista = list(lista)
+    lista = len(lista)
+    print(lista)
+    if len(list(Juna.objects.raw("SELECT numero FROM junaApp_Juna WHERE numero='"+numero+"'"))) is not 0:
         return True
     return False
 
@@ -42,6 +46,6 @@ def poista_pyshadys(data):
     cursor.execute("DELETE from junaApp_Juna where asema='"+data["asema"]+"'")
 
 def pysahdys_olemassa(data):
-    if len(list(Asema.objects.raw("SELECT numero FROM junaApp_Pysahdys WHERE numero='"+data["asema"]+"AND junan_numero='"+data["asema"]+"'"))) is not 0:
+    if len(list(Pysahdys.objects.raw("SELECT numero FROM junaApp_Pysahdys WHERE numero='"+data["asema"]+"AND junan_numero='"+data["asema"]+"'"))) is not 0:
         return True
     return False
