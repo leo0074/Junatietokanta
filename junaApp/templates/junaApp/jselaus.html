@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% include "junaApp/navigation.html" %}
+    <br>
+    <br>
+
+    <form name="junat">
+        <p>Hae junia hakusanalla. Tyhjä kenttä hakee kaikki tietokannan junat</p>
+        <input type="text", size="10" id="hakusana">
+        <input type="button" value="hae" onclick="hae()">
+    </form>
+
+
+    <script type="text/javascript">
+        var junat = {{ junat|safe }};
+        var elementit = [];
+
+        function hae(){
+            tyhjenna();
+            var hakusana = document.getElementById('hakusana').value;
+            if(hakusana){
+                muodostaElementti(toStr(haeNumerolla(hakusana)));
+            }else{
+                for (juna of junat) {
+                    muodostaElementti(toStr(juna));
+                }
+            }
+        }
+
+        function haeNumerolla(numero){
+            for(juna of junat){
+                if(juna.numero==numero){
+                    return juna;
+                }
+            }
+        }
+
+        function muodostaElementti(teksti){
+            var field = document.createElement("INPUT");
+            var att = document.createAttribute("type");
+            att.value = "text";
+            field.setAttributeNode(att);
+
+            var att = document.createAttribute("readonly"); //vain luku
+            att.value = "readonly";
+            field.setAttributeNode(att);
+
+            var att = document.createAttribute("id"); //tunniste
+            att.value = "asa";
+            field.setAttributeNode(att);
+
+            var att = document.createAttribute("size"); //koko
+            att.value = "80";
+            field.setAttributeNode(att);
+
+            var att = document.createAttribute("value"); //arvo
+            att.value = teksti;
+            field.setAttributeNode(att);
+
+            document.body.appendChild(field);
+            elementit.push(field);
+
+            var field = document.createElement("br"); //rivinvaihto
+            document.body.appendChild(field);
+            elementit.push(field);
+
+        }
+
+        function tyhjenna(){
+            for(var x = 0; x < elementit.length; x++){
+                elementit[x].parentNode.removeChild(elementit[x]);
+            }
+            elementit=[]
+        }
+
+        function toStr(juna){
+            var mjono = juna.tyyppi + " juna numero " + juna.numero + " " + juna.lahtoasema + "-" + juna.paateasema;
+            mjono = mjono + " (" + juna.lahtoaika + "-" + juna.saapumisaika + ") kulkee " + juna.kulkupaivat;
+            return mjono;
+        }
+    </script>
+</body>
+</html>

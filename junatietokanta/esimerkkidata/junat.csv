@@ -1,2 +1,3 @@
 numero,tyyppi,lahtoasema,lahtoaika,paateasema,saapumisaika,kulkupaivat
 1,IC,Helsinki,10:00,Joensuu,17:00,Ma-Su
+2,Pendolino,Helsinki,12:00,Kuopio,16:00,Ma-Su

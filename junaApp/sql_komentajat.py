@@ -28,14 +28,9 @@ def poista_juna(data):
     cursor.execute("DELETE from junaApp_Pysahdys where junan_numero='"+data["numero"]+"'")
 
 def juna_olemassa(numero):
-    lista = Juna.objects.raw("SELECT * FROM junaApp_Juna WHERE numero='"+numero+"'")
-    lista = list(lista)
-    lista = len(lista)
-    print(lista)
     if len(list(Juna.objects.raw("SELECT numero FROM junaApp_Juna WHERE numero='"+numero+"'"))) is not 0:
         return True
     return False
-
 def luo_pysahdys(data):
     cursor = connection.cursor()
     cursor.execute("INSERT INTO junaApp_Pysahdys (asema, junan_numero, saapumisaika, lahtoaika) VALUES"

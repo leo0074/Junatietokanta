@@ -8,3 +8,5 @@ Suurin osa sql:stä samaan paikkaan. Käyttöliittymän backendin hiemosta. 2h
 Dokumentaation aloitus. SQL-tiedostojen luonti. Palvelimen pystytys. 3h
 23.12.2015
 Junanäkymä + kontrolleri. Dokumentaation päivitys. 3h  
+27.12.2015
+Junan selausnäkymä. Dokumentaation päivitys. 5h
