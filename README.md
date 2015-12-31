@@ -12,6 +12,8 @@ palikat ovat asennettuna (esim mysql tarvitsee python-mysql liitännän)
 
 esimerkkidata löytyy csv-tiedostoina esimerkkidata-kansiosta. Tiedostot voidaan ladata sivuston lataa tidosto -näkymästä.  
 
+Kirjautuminen päätäyttäjäksi onnistuu tunnuksella: 'admin' ja salasanalla: 'admin'
+
 Ohjelmisto löytyy tällä hetkellä osoitteesta: junaapp.ddns.net/junaApp/ , mutta jos haluaa kokeilla itse sovellusta omassa ympäristössä, tässä asennusohjeet:  
 
 1: Asenna python (käsittääkseni löytyy ubunduista valmiina) windowsille: https://www.python.org/downloads/release/python-351/  

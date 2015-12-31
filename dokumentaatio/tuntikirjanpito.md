@@ -10,3 +10,5 @@ Dokumentaation aloitus. SQL-tiedostojen luonti. Palvelimen pystytys. 3h
 Junan‰kym‰ + kontrolleri. Dokumentaation p‰ivitys. 3h  
 27.12.2015
 Junan selausn‰kym‰. Dokumentaation p‰ivitys. 5h
+31.12.2015
+Kirjautuminen sis‰‰n ja ulos. 2h

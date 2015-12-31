@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>Käyttäjätunnus</td>
+    <td><input type="text" id="username" name="username"></td>
+</tr>
+<tr>
+    <td>Salasana</td>
+    <td><input type="password" id="password" name="password"></td>
+</tr>
+</table>
+
+
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+    <p id="messages">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    </p>
+</body>
+</html>

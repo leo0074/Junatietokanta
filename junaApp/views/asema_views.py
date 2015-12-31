@@ -4,8 +4,9 @@ from django.template import RequestContext, loader
 from django.contrib import messages
 from junaApp.models import Asema
 from junaApp import sql_komentajat
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def asema(request):
     asemat = Asema.objects.raw('SELECT nimi FROM junaApp_Asema')
     if request.method == 'POST':

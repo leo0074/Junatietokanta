@@ -38,10 +38,17 @@
 <body>
 <ul>
     <li><a href='{% url "index" %}'><span>Etusivu</span></a></li>
-    <li><a href='{% url "lataus" %}'><span>Lataa tiedosto</span></a></li>
-    <li><a href='{% url "asema" %}'><span>Asemien hallinta</span></a></li>
-    <li><a href='{% url "juna" %}'><span>Junien hallinta</span></a></li>
+    {% if user.is_authenticated %}
+        <li><a href='{% url "lataus" %}'><span>Lataa tiedosto</span></a></li>
+        <li><a href='{% url "asema" %}'><span>Asemien hallinta</span></a></li>
+        <li><a href='{% url "juna" %}'><span>Junien hallinta</span></a></li>
+    {% endif %}
     <li><a href='{% url "jselaus" %}'><span>Junien selaus</span></a></li>
+    {% if user.is_authenticated %}
+        <li style="float: right"><a href='{% url "logout" %}'>Kirjaudu ulos</a></li>
+    {% else %}
+        <li style="float: right"><a href='{% url "login" %}'>Kirjaudu</a></li>
+    {% endif %}
 </ul>
 </body>
 </html>

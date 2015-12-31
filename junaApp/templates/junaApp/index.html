@@ -7,6 +7,10 @@
 <body>
 {% include "junaApp/navigation.html" %}
 <br><br>
-<p>Tämä on etusivu!</p>
+    {% if user.is_authenticated %}
+        <p>Olet kirjautunut sisään!</p>
+    {% else %}
+        <p>Tämä on etusivu!</p>
+    {% endif %}
 </body>
 </html>

@@ -4,15 +4,9 @@ from django.shortcuts import render
 from io import StringIO
 from junaApp.sql_komentajat import *
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-
-def _decode(file):
-    content = file.read()
-    encoding = chardet.detect(content)['encoding']
-    content = content.decode(encoding)
-    filestream = StringIO(content)
-    return filestream
-
+@login_required
 def lataus(request):
     if request.method == 'POST':
         if 'file' in request.FILES:
@@ -34,3 +28,10 @@ def lataus(request):
                 luo_pysahdys(alkio)
         messages.add_message(request, messages.SUCCESS, "Tiedot ladattu!")
     return render(request, 'junaApp/lataus.html')
+
+def _decode(file):
+    content = file.read()
+    encoding = chardet.detect(content)['encoding']
+    content = content.decode(encoding)
+    filestream = StringIO(content)
+    return filestream
