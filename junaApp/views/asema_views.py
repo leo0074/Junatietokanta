@@ -2,13 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.contrib import messages
-from junaApp.models import Asema
 from junaApp import sql_komentajat
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def asema(request):
-    asemat = Asema.objects.raw('SELECT nimi FROM junaApp_Asema')
+    asemat = sql_komentajat.hae_asemat()
     if request.method == 'POST':
         data = request.POST.copy().dict()
         if "create" in data:
@@ -17,9 +16,11 @@ def asema(request):
                 return _virheviesti(request, data, "Pakollista tietoa puuttuu!", asemat)
 
             if sql_komentajat.asema_olemassa(data["nimi"]):
-                return _virheviesti(request, data, "Asema  on jo olemassa!", asemat)
-            sql_komentajat.luo_asema(data)
-            messages.add_message(request, messages.SUCCESS, "Asema tallennettu!")
+                sql_komentajat.paivita_asema(data)
+                messages.add_message(request, messages.SUCCESS, "Asema muutettu!")
+            else:
+                sql_komentajat.luo_asema(data)
+                messages.add_message(request, messages.SUCCESS, "Uusi asema tallennettu!")
 
         if "delete" in data:
             sql_komentajat.poista_asema(data)

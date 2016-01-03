@@ -12,3 +12,5 @@ Junan‰kym‰ + kontrolleri. Dokumentaation p‰ivitys. 3h
 Junan selausn‰kym‰. Dokumentaation p‰ivitys. 5h
 31.12.2015
 Kirjautuminen sis‰‰n ja ulos. 2h
+3.1.2016
+Aseman muokkaus. Pys‰hdyksen luonti ja selailu junien lomassa. 5h

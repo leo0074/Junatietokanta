@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% include "junaApp/navigation.html" %}
+    <br><br>
+    <h2>Lisää junalle pysäkki</h2>
+    <form class="form" action='{% url "pysahdys" %}' method="post">
+        {% csrf_token %}
+        <p>Juna:</p>
+        <select name="juna" id="juna" class="form-control form-field">
+            {% for juna in junat %}
+                <option value="{{ juna.numero }}">{{ juna.mjono }}</option>
+            {% endfor %}
+        </select>
+        <p>Asema:</p>
+        <select name="asema" id="asema" class="form-control form-field">
+            {% for asema in asemat %}
+                <option value="{{ asema }}">{{ asema }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <span class="input-group-addon wide">saapumisaika</span><br>
+        <input type="text" name="saapumisaika" value={{saapumisaika}}><br>
+
+        <span class="input-group-addon wide">lähtöaika</span><br>
+        <input type="text" name="lahtoaika" value={{lahtoaika}}><br>
+
+        <button type="submit">Lisää</button>
+    </form>
+    <p id="messages">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    </p>
+</body>
+</html>

@@ -38,7 +38,7 @@ class Juna(models.Model):
 #)
 class Pysahdys(models.Model):
     asema = models.CharField(max_length=30)
-    junan_numero = models.IntegerField()
+    junannumero = models.IntegerField()
     saapumisaika = models.TimeField()
     lahtoaika = models.TimeField()
 

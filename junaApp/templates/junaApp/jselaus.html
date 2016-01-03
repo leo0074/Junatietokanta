@@ -10,7 +10,7 @@
     <br>
 
     <form name="junat">
-        <p>Hae junia hakusanalla. Tyhjä kenttä hakee kaikki tietokannan junat</p>
+        <p>Hae junia numeron perusteella. Tyhjä kenttä hakee kaikki tietokannan junat</p>
         <input type="text", size="10" id="hakusana">
         <input type="button" value="hae" onclick="hae()">
     </form>
@@ -18,16 +18,19 @@
 
     <script type="text/javascript">
         var junat = {{ junat|safe }};
+        var pysahdykset = {{ pysahdykset|safe }};
         var elementit = [];
-
         function hae(){
             tyhjenna();
             var hakusana = document.getElementById('hakusana').value;
             if(hakusana){
-                muodostaElementti(toStr(haeNumerolla(hakusana)));
+                muodostaElementti(JStr(haeNumerolla(hakusana)));
             }else{
                 for (juna of junat) {
-                    muodostaElementti(toStr(juna));
+                    muodostaElementti(JStr(juna), 70);
+                    for(pysakki of haeJunanPysakit(juna)){
+                        muodostaElementti(PStr(pysakki), 30);
+                    }
                 }
             }
         }
@@ -40,7 +43,18 @@
             }
         }
 
-        function muodostaElementti(teksti){
+        function haeJunanPysakit(juna){
+            var pysakit = []
+            var numero = juna.numero;
+            for(pysakki of pysahdykset){
+                if(numero == pysakki.junannumero){
+                    pysakit.push(pysakki);
+                }
+            }
+            return pysakit;
+        }
+
+        function muodostaElementti(teksti, koko){
             var field = document.createElement("INPUT");
             var att = document.createAttribute("type");
             att.value = "text";
@@ -50,12 +64,8 @@
             att.value = "readonly";
             field.setAttributeNode(att);
 
-            var att = document.createAttribute("id"); //tunniste
-            att.value = "asa";
-            field.setAttributeNode(att);
-
             var att = document.createAttribute("size"); //koko
-            att.value = "80";
+            att.value = koko;
             field.setAttributeNode(att);
 
             var att = document.createAttribute("value"); //arvo
@@ -68,7 +78,6 @@
             var field = document.createElement("br"); //rivinvaihto
             document.body.appendChild(field);
             elementit.push(field);
-
         }
 
         function tyhjenna(){
@@ -78,11 +87,17 @@
             elementit=[]
         }
 
-        function toStr(juna){
+        function JStr(juna){
             var mjono = juna.tyyppi + " juna numero " + juna.numero + " " + juna.lahtoasema + "-" + juna.paateasema;
             mjono = mjono + " (" + juna.lahtoaika + "-" + juna.saapumisaika + ") kulkee " + juna.kulkupaivat;
             return mjono;
         }
+
+        function PStr(pysahdys){
+            return pysahdys.asema + " " + pysahdys.saapumisaika + "-" + pysahdys.lahtoaika;
+
+        }
+
     </script>
 </body>
 </html>

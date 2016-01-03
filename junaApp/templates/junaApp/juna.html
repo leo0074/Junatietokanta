@@ -36,6 +36,18 @@
 
         <button type="submit">Lisää</button>
     </form>
+    <form class="form" action='{% url "juna" %}' method="post">
+        <h2>Poista juna</h2>
+        {% csrf_token %}
+        <input type="hidden" name="delete" value="delete">
+        <select name="juna" id="juna" class="form-control form-field">
+            {% for juna in junat %}
+                <option value="{{ juna.numero }}">{{ juna.mjono }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Poista</button>
+    </form>
+
     <p id="messages">
     {% for message in messages %}
         {{ message }}

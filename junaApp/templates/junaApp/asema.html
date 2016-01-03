@@ -10,7 +10,8 @@
         {% include "junaApp/navigation.html" %}
         <form class="form" action='{% url "asema" %}' method="post">
             <br><br>
-            <h2>Lisää asema</h2>
+            <h2>Lisää asema/muokkaa asemaa</h2>
+            <p>Lomake lisää uuden aseman tai päivittää vanhaa, jos asema on jo olemassa kyseisellä nimellä</p>
             {% csrf_token %}
             <input type="hidden" name="create" value="create">
 

@@ -1,17 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import RequestContext, loader
-from django.contrib import messages
-from junaApp.models import Juna
 from junaApp import sql_komentajat
 from django.forms import model_to_dict
 import json
 
 def jselaus(request):
-    all = list(Juna.objects.raw("SELECT * from junaApp_Juna"))
-    all = [model_to_dict(one) for one in all]
-    jsoni = json.dumps(all, default=date_handler)
-    return render(request, 'junaApp/jselaus.html', {"junat" : jsoni})
+    junat = list(sql_komentajat.hae_junat())
+    junat = [model_to_dict(juna) for juna in junat]
+    junat = json.dumps(junat, default=date_handler)
+
+    pysahdykset = list(sql_komentajat.hae_pysahdykset())
+    pysahdykset = [model_to_dict(pysahdys) for pysahdys in pysahdykset]
+    pysahdykset[0]["saapumisaika"] = str(pysahdykset[0]["saapumisaika"])
+    pysahdykset[0]["lahtoaika"] = str(pysahdykset[0]["lahtoaika"])
+    pysahdykset = json.dumps(pysahdykset, default=date_handler)
+
+    return render(request, 'junaApp/jselaus.html', {"junat" : junat, "pysahdykset" : pysahdykset})
 
 def date_handler(obj):
     return obj.isoformat() if hasattr(obj, 'isoformat') else obj
