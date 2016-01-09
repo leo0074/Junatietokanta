@@ -14,3 +14,7 @@ Junan selausn‰kym‰. Dokumentaation p‰ivitys. 5h
 Kirjautuminen sis‰‰n ja ulos. 2h
 3.1.2016
 Aseman muokkaus. Pys‰hdyksen luonti ja selailu junien lomassa. 5h
+7.1.2016
+Dokumentaation hiominen. 2h
+9.1.2016
+Junien ja asemien muokkaus lis‰yskenttien avulla. 2h

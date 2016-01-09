@@ -12,12 +12,29 @@ palikat ovat asennettuna (esim mysql tarvitsee python-mysql liitännän)
 
 esimerkkidata löytyy csv-tiedostoina esimerkkidata-kansiosta. Tiedostot voidaan ladata sivuston lataa tidosto -näkymästä.  
 
+csv-tiedostojen muodon täytyy olla seuraavien esimerkkien tapainen:
+
+Asema:  
+  
+nimi,kaupunki  
+Helsinki,Helsinki  
+...  
+  
+Juna:  
+numero,tyyppi,lahtoasema,lahtoaika,paateasema,saapumisaika,kulkupaivat  
+1,IC,Helsinki,10:00,Kuopio,17:00,Ma-Su  
+...  
+  
+Pysähdys:  
+asema,junannumero,saapumisaika,lahtoaika  
+Pasila,1,10:05,10:06  
+  
 Kirjautuminen päätäyttäjäksi onnistuu tunnuksella: 'admin' ja salasanalla: 'admin'
 
 Ohjelmisto löytyy tällä hetkellä osoitteesta: junaapp.ddns.net/junaApp/ , mutta jos haluaa kokeilla itse sovellusta omassa ympäristössä, tässä asennusohjeet:  
 
 1: Asenna python (käsittääkseni löytyy ubunduista valmiina) windowsille: https://www.python.org/downloads/release/python-351/  
-2: Asenna django: windows: avaa komentorivi järjestelmänvalvojana ja kirjoita "pip install django"  
+2: Asenna django: windows: avaa komentorivi järjestelmänvalvojana ja kirjoita "pip install django"    
 	ubundu: kirjoita terminaaliin "sudo pip install django"  
 3: kloonaa repositorio: git clone https://github.com/leo0074/Junatietokanta tai githubin sivun kautta, jos githubia ei löydy koneelta.  
 4: Siirry komentorivillä/terminaalilla Junatietokanta-kansioon (kansio missä on manage.py)  

@@ -8,6 +8,9 @@
     {% include "junaApp/navigation.html" %}
     <br><br>
     <h2>Lisää junalle pysäkki</h2>
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
     <form class="form" action='{% url "pysahdys" %}' method="post">
         {% csrf_token %}
         <p>Juna:</p>
@@ -23,12 +26,12 @@
             {% endfor %}
         </select>
         <br><br>
-        <span class="input-group-addon wide">saapumisaika</span><br>
+        <span class="input-group-addon wide">Saapumisaika</span><br>
         <input type="text" name="saapumisaika" value={{saapumisaika}}><br>
-
-        <span class="input-group-addon wide">lähtöaika</span><br>
+        <br>
+        <span class="input-group-addon wide">Lähtöaika</span><br>
         <input type="text" name="lahtoaika" value={{lahtoaika}}><br>
-
+        <br>
         <button type="submit">Lisää</button>
     </form>
     <p id="messages">

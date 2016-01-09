@@ -3,7 +3,7 @@ from junaApp.models import *
 
 def luo_asema(data):
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO junaApp_Asema (nimi, kaupunki, pituus, leveys) VALUES"
+    cursor.execute("INSERT INTO junaApp_Asema (nimi, kaupunki) VALUES"
                    "('"+data["nimi"]+"','"+data["kaupunki"]+"',0,0)")
 
 def poista_asema(data):
@@ -39,6 +39,11 @@ def juna_olemassa(numero):
     if len(list(Juna.objects.raw("SELECT numero FROM junaApp_Juna WHERE numero='"+numero+"'"))) is not 0:
         return True
     return False
+
+def paivita_juna(data):
+    cursor = connection.cursor()
+    cursor.execute("UPDATE junaApp_Juna SET numero='"+data["numero"]+"' and tyyppi='"+data["tyyppi"]+"' WHERE numero='"+data["numero"]+"'")
+
 
 def hae_junat():
     return Juna.objects.raw("SELECT * from junaApp_Juna")

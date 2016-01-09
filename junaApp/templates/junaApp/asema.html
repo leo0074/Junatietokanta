@@ -8,36 +8,29 @@
     </head>
     <body>
         {% include "junaApp/navigation.html" %}
-        <form class="form" action='{% url "asema" %}' method="post">
+        <p id="messages">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </p>
+        <form name="asemat" class="form" action='{% url "asema" %}' method="post">
             <br><br>
             <h2>Lisää asema/muokkaa asemaa</h2>
             <p>Lomake lisää uuden aseman tai päivittää vanhaa, jos asema on jo olemassa kyseisellä nimellä</p>
             {% csrf_token %}
             <input type="hidden" name="create" value="create">
 
-            <span class="input-group-addon wide">nimi</span><br>
+            <span class="input-group-addon wide">Nimi</span><br>
             <input type="text" name="nimi" value={{nimi}}><br>
-
-            <span class="input-group-addon wide">kaupunki</span><br>
+            <br>
+            <span class="input-group-addon wide">Kaupunki</span><br>
             <input type="text" name="kaupunki" value={{kaupunki}}><br>
-
-            <span class="input-group-addon wide">pituus</span><br>
-            <input type="text" name="pituus" value={{pituus}}><br>
-
-            <span class="input-group-addon wide">leveys</span><br>
-            <input type="text" name="leveys" value={{leveys}}><br>
-
             <button type="submit">Lisää</button>
         </form>
-    <p id="messages">
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-    </p>
     <br>
 
     <form class="form" action='{% url "asema" %}' method="post">
-        <h2>Poista asema</h2>
+        <h2>Poista asema/muokkaa asemaa</h2>
         {% csrf_token %}
         <input type="hidden" name="delete" value="delete">
         <select name="asema" id="asema" class="form-control form-field">
@@ -46,7 +39,24 @@
             {% endfor %}
         </select>
         <button type="submit">Poista</button>
-
+        <input type="button", value="Muokkaa" onclick="tayta()">
     </form>
+    <p>Aseman poisto tapahtuu "Poista" painikkeella ja muokkaaminen "Muokkaa" painikkeella sekä arvojen päivittämisellä kenttiin. Muokatessa muista painaa lopuksi "Lisää"</p>
+
+    <script type="text/javascript">
+        var asemat = {{ jscript|safe }};
+        function tayta(){
+            var x = document.getElementById("asema").selectedIndex;
+            var arvo = document.getElementsByTagName("option")[x].value;
+            arvo = arvo.split(",");
+            arvo = arvo[0];
+            for(asema of asemat){
+                if(asema.nimi == arvo){
+                    document.asemat.nimi.value = asema.nimi;
+                    document.asemat.kaupunki.value = asema.kaupunki;
+                }
+            }
+        }
+    </script>
     </body>
 </html>

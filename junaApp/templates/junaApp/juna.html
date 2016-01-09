@@ -8,32 +8,37 @@
     {% include "junaApp/navigation.html" %}
     <br>
     <br>
-    <form class="form" action='{% url "juna" %}' method="post">
+    <form class="form" name="junat" action='{% url "juna" %}' method="post">
         <h2>Lisää juna</h2>
         {% csrf_token %}
+        <p id="messages">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+        </p>
         <input type="hidden" name="create" value="create">
 
-        <span class="input-group-addon wide">numero</span><br>
+        <span class="input-group-addon wide">Numero</span><br>
         <input type="text" name="numero" value={{numero}}><br>
-
-        <span class="input-group-addon wide">tyyppi</span><br>
+        <br>
+        <span class="input-group-addon wide">Tyyppi</span><br>
         <input type="text" name="tyyppi" value={{tyyppi}}><br>
-
-        <span class="input-group-addon wide">lähtöasema</span><br>
+        <br>
+        <span class="input-group-addon wide">Lähtöasema</span><br>
         <input type="text" name="lahtoasema" value={{lahtoasema}}><br>
-
-        <span class="input-group-addon wide">lähtoaika</span><br>
-        <input type="text" name="lahtoaika" value={{lahtoaika}}><br>
-
-        <span class="input-group-addon wide">pääteasema</span><br>
+        <br>
+        <span class="input-group-addon wide">Pääteasema</span><br>
         <input type="text" name="paateasema" value={{paateasema}}><br>
-
-        <span class="input-group-addon wide">saapumisaika</span><br>
+        <br>
+        <span class="input-group-addon wide">Lähtoaika</span><br>
+        <input type="text" name="lahtoaika" value={{lahtoaika}}><br>
+        <br>
+        <span class="input-group-addon wide">Saapumisaika</span><br>
         <input type="text" name="saapumisaika" value={{saapumisaika}}><br>
-
-        <span class="input-group-addon wide">kulkupäivät</span><br>
+        <br>
+        <span class="input-group-addon wide">Kulkupäivät</span><br>
         <input type="text" name="kulkupaivat" value={{kulkupaivat}}><br>
-
+        <br>
         <button type="submit">Lisää</button>
     </form>
     <form class="form" action='{% url "juna" %}' method="post">
@@ -46,12 +51,29 @@
             {% endfor %}
         </select>
         <button type="submit">Poista</button>
+        <input type="button" value="Muokkaa" onclick="tayta()">
     </form>
+    <p>Junan poisto tapahtuu "Poista" painikkeella ja muokkaaminen "Muokkaa" painikkeella sekä arvojen päivittämisellä kenttiin. Muokatessa muista painaa lopuksi "Lisää"</p>
+    <p>Huom! Älä yritä vaihtaa junan numeroa!</p>
 
-    <p id="messages">
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-    </p>
+    <script type="text/javascript">
+        var junat = {{ jscript|safe }};
+
+        function tayta(){
+            var x = document.getElementById("juna").selectedIndex;
+            var arvo = document.getElementsByTagName("option")[x].value;
+            for(juna of junat){
+                if(juna.numero == arvo){
+                    document.junat.numero.value = juna.numero;
+                    document.junat.tyyppi.value = juna.tyyppi;
+                    document.junat.lahtoasema.value = juna.lahtoasema;
+                    document.junat.lahtoaika.value = juna.lahtoaika;
+                    document.junat.paateasema.value = juna.paateasema;
+                    document.junat.saapumisaika.value = juna.saapumisaika;
+                    document.junat.kulkupaivat.value = juna.kulkupaivat;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
