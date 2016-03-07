@@ -31,7 +31,7 @@ Pasila,1,10:05,10:06
   
 Kirjautuminen päätäyttäjäksi onnistuu tunnuksella: 'admin' ja salasanalla: 'admin'
 
-Ohjelmisto löytyy tällä hetkellä osoitteesta: junaapp.ddns.net/junaApp/ , mutta jos haluaa kokeilla itse sovellusta omassa ympäristössä, tässä asennusohjeet:  
+asennusohjeet:  
 
 1: Asenna python (käsittääkseni löytyy ubunduista valmiina) windowsille: https://www.python.org/downloads/release/python-351/  
 2: Asenna django: windows: avaa komentorivi järjestelmänvalvojana ja kirjoita "pip install django"    
